@@ -47,9 +47,9 @@ def contato():
 def rank():
     return render_template("rank.html")
 
-@app.route("/fale")
-def fale():
-    return render_template("fale_conosco.html")
+@app.route("/entrar")
+def entrar():
+    return render_template("entrar.html")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <h1>Ranking Arcade</h1>
+
+        <ul>
+            <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+            <li><a href="{{ url_for('contato') }}">Contato</a></li>
+            <li><a href="{{ url_for('rank') }}">Rank</a></li>
+            <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="arcade-login-wrapper">
+
+        <h1 class="arcade-login-title">
+            Criar Conta
+        </h1>
+
+        <p class="arcade-login-subtitle">
+            Cadastre-se para entrar no Ranking Arcade
+        </p>
+
+        <form method="POST">
+
+            <div class="arcade-input-group">
+
+                <label>Nome</label>
+
+                <input
+                type="text"
+                name="nome"
+                placeholder="Digite seu nome"
+                required>
+
+            </div>
+
+            <div class="arcade-input-group">
+
+                <label>E-mail</label>
+
+                <input
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required>
+
+            </div>
+
+            <div class="arcade-input-group">
+
+                <label>Senha</label>
+
+                <input
+                type="password"
+                name="senha"
+                placeholder="Digite sua senha"
+                required>
+
+            </div>
+
+            <div class="arcade-input-group">
+
+                <label>Confirmar Senha</label>
+
+                <input
+                type="password"
+                name="confirmar_senha"
+                placeholder="Confirme sua senha"
+                required>
+
+            </div>
+
+            <div class="arcade-login-buttons">
+
+                <button
+                type="submit"
+                class="arcade-btn arcade-btn-register">
+
+                    Registrar
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

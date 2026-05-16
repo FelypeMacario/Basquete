@@ -76,7 +76,7 @@ letter-spacing: 2px;
 .ranking-box h2 {
     text-align: center;
     margin-bottom: 10px;
-    color: #ff5100;
+        color: #ff5100;
 }
 
 .ranking-box ol {
@@ -98,4 +98,163 @@ letter-spacing: 2px;
     .ranking-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* LOGIN BOX */
+
+.arcade-login-wrapper{
+
+    width: 100%;
+    max-width: 650px;
+
+    background: #111114;
+
+    padding: 50px;
+
+    border-radius: 20px;
+
+    border-top: 4px solid #FF5F1F;
+    border-bottom: 4px solid #4410C3;
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.5);
+
+    margin: 60px auto;
+}
+
+.arcade-login-title{
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+.arcade-login-subtitle{
+
+    text-align: center;
+
+    color: #bdbdbd;
+
+    margin-bottom: 40px;
+}
+
+
+.arcade-input-group{
+    margin-bottom: 25px;
+}
+
+.arcade-input-group label{
+
+    display: block;
+
+    color: #d4d4d4;
+
+    margin-bottom: 8px;
+}
+
+.arcade-input-group input{
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    border: 2px solid #333;
+
+    background: #1f1f25;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.arcade-input-group input:focus{
+
+    border-color: #4410C3;
+
+    box-shadow:
+    0 0 12px rgba(68,16,195,0.5);
+}
+
+
+.arcade-login-buttons{
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 10px;
+}
+
+.arcade-btn{
+
+    flex: 1;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.arcade-btn-login{
+
+    background: linear-gradient(
+    90deg,
+    #FF5F1F,
+    #ff8c00
+    );
+
+    color: white;
+}
+
+.arcade-btn-register{
+
+    background: linear-gradient(
+    90deg,
+    #4410C3,
+    #7a3cff
+    );
+
+    color: white;
+}
+
+.arcade-btn:hover{
+
+    transform: scale(1.03);
+
+    opacity: 0.9;
+}
+
+@media(max-width: 600px){
+
+    .arcade-login-wrapper{
+        padding: 35px;
+    }
+
+    .arcade-login-buttons{
+        flex-direction: column;
+    }
+
+    .arcade-login-title{
+        font-size: 34px;
+    }
+
 }
