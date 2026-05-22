@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -31,28 +31,38 @@ def get_dados(ordenacao):
 def index():
     return render_template(
         "index.html",
-        rank1v1=get_dados("vitorias"),  
-        rank1min=get_dados("derrotas"),  
+        rank1v1=get_dados("vitorias"),
+        rank1min=get_dados("derrotas"),
         rankpontos=get_dados("pontos")
     )
+
 @app.route("/desafio")
 def desafio():
     return render_template("desafio.html")
 
-@app.route("/contato")
+
+@app.route("/contato", methods=["GET", "POST"])
 def contato():
+    if request.method == "POST":
+        return redirect(url_for("contato"))  
     return render_template("contato.html")
+
 
 @app.route("/rank")
 def rank():
     return render_template("rank.html")
 
-@app.route("/entrar")
+@app.route("/entrar", methods=["GET", "POST"])
 def entrar():
+    if request.method == "POST":
+        return redirect(url_for("index"))
     return render_template("entrar.html")
 
+@app.route("/registro", methods=["GET", "POST"])
+def registro():
+    if request.method == "POST":
+        return redirect(url_for("entrar"))  # ← volta para o login após registrar
+    return render_template("registro.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-    

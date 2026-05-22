@@ -1,116 +1,150 @@
 <!DOCTYPE html>
-<html lang="Pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basquete Game</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
-
 </head>
-    
-<body> 
+
+<body class="page-index">
+
     <nav class="navbar">
         <h1>Ranking Arcade</h1>
-    <ul>
-        <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
-        <li><a href="{{ url_for('contato') }}">Contato</a></li>
-        <li><a href="{{ url_for('rank') }}">Rank</a></li>
-        <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
-    </ul>
-</nav>           
-    <p class="frase">Mire alto, jogue forte, deixe seu nome no topo</p>
+        <ul>
+            <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+            <li><a href="{{ url_for('contato') }}">Contato</a></li>
+            <li><a href="{{ url_for('rank') }}">Rank</a></li>
+            <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
+        </ul>
+    </nav>
 
-  <div class="ranking-container">
-
-    <!-- RANK 1 -->
-    <div class="ranking-box">
-        <h2>Top 10 Rank 1v1</h2>
-        <table class="ranking-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>V</th>
-                    <th>D</th>
-                    <th>P</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for jogador in rank1v1 %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td data-label="Nome">{{ jogador.nome }}</td>
-                    <td data-label="Vitórias">{{ jogador.vitorias }}</td>
-                    <td data-label="Derrotas">{{ jogador.derrotas }}</td>
-                    <td data-label="Pontos">{{ jogador.pontos }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <!-- HERO -->
+    <div class="index-hero">
+        <span class="index-hero-icon">🏀</span>
+        <h1 class="index-hero-title">Ranking Arcade</h1>
+        <p class="index-hero-sub">Mire alto, jogue forte, deixe seu nome no topo</p>
+        <a href="{{ url_for('desafio') }}" class="arcade-btn arcade-btn-login index-hero-btn">
+            Jogar Agora
+        </a>
     </div>
 
-    <!-- RANK 2 -->
-    <div class="ranking-box">
-        <h2>Top 10 Rank 1 Minuto</h2>
-        <table class="ranking-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>V</th>
-                    <th>D</th>
-                    <th>P</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for jogador in rank1min %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td data-label="Nome">{{ jogador.nome }}</td>
-                    <td data-label="Vitórias">{{ jogador.vitorias }}</td>
-                    <td data-label="Derrotas">{{ jogador.derrotas }}</td>
-                    <td data-label="Pontos">{{ jogador.pontos }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <!-- SEÇÃO RANKINGS -->
+    <div class="index-section-title">
+        <span class="index-section-line"></span>
+        <h2>🏆 Top 10 Rankings</h2>
+        <span class="index-section-line"></span>
     </div>
 
-    <!-- RANK 3 -->
-    <div class="ranking-box">
-        <h2>Top 10 Pontos</h2>
-        <table class="ranking-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>V</th>
-                    <th>D</th>
-                    <th>P</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for jogador in rankpontos %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td data-label="Nome">{{ jogador.nome }}</td>
-                    <td data-label="Vitórias">{{ jogador.vitorias }}</td>
-                    <td data-label="Derrotas">{{ jogador.derrotas }}</td>
-                    <td data-label="Pontos">{{ jogador.pontos }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="ranking-container">
+
+        <!-- RANK 1v1 -->
+        <div class="ranking-box">
+            <h2>⚔️ Rank 1v1</h2>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>V</th>
+                        <th>D</th>
+                        <th>P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jogador in rank1v1 %}
+                    <tr class="{% if loop.index == 1 %}row-gold{% elif loop.index == 2 %}row-silver{% elif loop.index == 3 %}row-bronze{% endif %}">
+                        <td class="rank-idx">
+                            {% if loop.index == 1 %}🥇
+                            {% elif loop.index == 2 %}🥈
+                            {% elif loop.index == 3 %}🥉
+                            {% else %}{{ loop.index }}{% endif %}
+                        </td>
+                        <td class="rank-player">{{ jogador.nome }}</td>
+                        <td class="rank-win">{{ jogador.vitorias }}</td>
+                        <td>{{ jogador.derrotas }}</td>
+                        <td class="rank-pts">{{ jogador.pontos }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RANK 1 MINUTO -->
+        <div class="ranking-box">
+            <h2>⏱️ Rank 1 Minuto</h2>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>V</th>
+                        <th>D</th>
+                        <th>P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jogador in rank1min %}
+                    <tr class="{% if loop.index == 1 %}row-gold{% elif loop.index == 2 %}row-silver{% elif loop.index == 3 %}row-bronze{% endif %}">
+                        <td class="rank-idx">
+                            {% if loop.index == 1 %}🥇
+                            {% elif loop.index == 2 %}🥈
+                            {% elif loop.index == 3 %}🥉
+                            {% else %}{{ loop.index }}{% endif %}
+                        </td>
+                        <td class="rank-player">{{ jogador.nome }}</td>
+                        <td class="rank-win">{{ jogador.vitorias }}</td>
+                        <td>{{ jogador.derrotas }}</td>
+                        <td class="rank-pts">{{ jogador.pontos }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RANK PONTOS -->
+        <div class="ranking-box">
+            <h2>🎯 Top Pontos</h2>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>V</th>
+                        <th>D</th>
+                        <th>P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jogador in rankpontos %}
+                    <tr class="{% if loop.index == 1 %}row-gold{% elif loop.index == 2 %}row-silver{% elif loop.index == 3 %}row-bronze{% endif %}">
+                        <td class="rank-idx">
+                            {% if loop.index == 1 %}🥇
+                            {% elif loop.index == 2 %}🥈
+                            {% elif loop.index == 3 %}🥉
+                            {% else %}{{ loop.index }}{% endif %}
+                        </td>
+                        <td class="rank-player">{{ jogador.nome }}</td>
+                        <td class="rank-win">{{ jogador.vitorias }}</td>
+                        <td>{{ jogador.derrotas }}</td>
+                        <td class="rank-pts">{{ jogador.pontos }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
-</div>
+    <!-- BOTÃO LOGIN -->
+    <div class="index-login-btn">
+        <a href="{{ url_for('entrar') }}" class="arcade-btn arcade-btn-register">
+            Entrar / Criar Conta
+        </a>
+    </div>
 
-
-
-    
 </body>
 </html>

@@ -1,14 +1,66 @@
 <!DOCTYPE html>
-<html lang="Pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basquete Game</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
 </head>
-    
+<body class="page-contato">
+
+  <nav class="navbar">
+    <h1>Ranking Arcade</h1>
+    <ul>
+      <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+      <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      <li><a href="{{ url_for('rank') }}">Rank</a></li>
+      <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
+    </ul>
+  </nav>
+
+  <div class="contato-wrapper">
+
+    <h1 class="contato-title">Contato</h1>
+    <p class="contato-subtitle">Fale conosco, tire dúvidas ou reporte um problema</p>
+
+    <form method="POST" action="{{ url_for('contato') }}">
+
+      <div class="arcade-input-group">
+        <label>Nome</label>
+        <input type="text" name="nome" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="arcade-input-group">
+        <label>E-mail</label>
+        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+      </div>
+
+      <div class="arcade-input-group">
+        <label>Assunto</label>
+        <input type="text" name="assunto" placeholder="Qual o assunto?" required>
+      </div>
+
+      <div class="arcade-input-group">
+        <label>Mensagem</label>
+        <textarea
+          name="mensagem"
+          placeholder="Escreva sua mensagem..."
+          rows="5"
+          required></textarea>
+      </div>
+
+      <div class="arcade-login-buttons">
+        <button type="submit" class="arcade-btn arcade-btn-login">
+          Enviar Mensagem
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>

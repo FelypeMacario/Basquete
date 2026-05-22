@@ -6,73 +6,55 @@
   <title>Login</title>
   <link rel="stylesheet" href="/static/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
-
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
 </head>
-<body>
-    <nav class="navbar">
-        <h1>Ranking Arcade</h1>
+<body class="page-entrar">
+
+  <nav class="navbar">
+    <h1>Ranking Arcade</h1>
     <ul>
-        <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
-        <li><a href="{{ url_for('contato') }}">Contato</a></li>
-        <li><a href="{{ url_for('rank') }}">Rank</a></li>
+      <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+      <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      <li><a href="{{ url_for('rank') }}">Rank</a></li>
     </ul>
-</nav>           
+  </nav>
+
   <div class="arcade-login-wrapper">
 
-    <h1 class="arcade-login-title">
-        Login
-    </h1>
+    <h1 class="arcade-login-title">Login</h1>
 
-    <p class="arcade-login-subtitle">
-        Faça login ou crie uma conta
-    </p>
+    <p class="arcade-login-subtitle">Faça login ou crie uma conta</p>
 
-    <form>
+    <form method="POST" action="{{ url_for('entrar') }}">
 
-        <div class="arcade-input-group">
+      <div class="arcade-input-group">
+        <label>E-mail</label>
+        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+      </div>
 
-            <label>E-mail</label>
+      <div class="arcade-input-group">
+        <label>Senha</label>
+        <input type="password" name="senha" placeholder="Digite sua senha" required>
+      </div>
 
-            <input
-            type="email"
-            placeholder="Digite seu e-mail">
+      <div class="arcade-login-buttons">
 
-        </div>
+        <button type="submit" class="arcade-btn arcade-btn-login">
+          Entrar
+        </button>
 
-        <div class="arcade-input-group">
+        <a href="{{ url_for('registro') }}">
+          <button type="button" class="arcade-btn arcade-btn-register">
+            Criar Conta
+          </button>
+        </a>
 
-            <label>Senha</label>
-
-            <input
-            type="password"
-            placeholder="Digite sua senha">
-
-        </div>
-
-        <div class="arcade-login-buttons">
-
-            <button
-            type="submit"
-            class="arcade-btn arcade-btn-login">
-
-                Entrar
-
-            </button>
-
-            <button
-            type="button"
-            class="arcade-btn arcade-btn-register">
-
-                Criar Conta
-
-            </button>
-
-        </div>
+      </div>
 
     </form>
 
-</div>
+  </div>
+
 </body>
 </html>

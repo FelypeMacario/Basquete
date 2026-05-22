@@ -1,11 +1,17 @@
 
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     background: #1F1F1F;
     font-family: Arial, sans-serif;
-   
 }
-.navbar{
+
+/* NAVBAR */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,60 +19,68 @@ body {
     background-color: #0D0D0D;
     border-bottom: 5px solid #FF5F1F;
     font-family: 'Audiowide', cursive;
-    
-
-
-}
-.navbar h1{
-color: #F2F2F2;
-font-size: 30px;
-font-weight: 400;
-margin: 0;
-letter-spacing: 2px;
 }
 
-.navbar ul{
+.navbar h1 {
+    color: #F2F2F2;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.navbar ul {
     display: flex;
     gap: 30px;
-    margin: 0;
-    padding: 0;
-    
+    list-style: none;
 }
 
-
-
-.navbar ul li a{
+.navbar ul li a {
     color: #b8b8b8;
     font-size: 17px;
-    transition: 0.3s ease;
-    
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
-.navbar ul li a:hover{
+
+.navbar ul li a:hover {
     color: #FF5F1F;
 }
 
-.frase{
+/* Navbar mobile */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .navbar ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* FRASE */
+.frase {
     text-align: center;
     color: #b8b8b8;
     font-size: 30px;
     padding: 20px;
-    margin: 0;
     font-family: 'Orbitron', sans-serif;
     border-bottom: 5px solid #4410C3;
-
-
 }
 
+/* RANKING */
 .ranking-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
 .ranking-box {
     background-color: #1a1a1a;
-    border: 2px solid #ff5100;
+    border: 2px solid #FF5F1F;
     border-radius: 10px;
     padding: 15px;
     color: #fff;
@@ -76,7 +90,7 @@ letter-spacing: 2px;
 .ranking-box h2 {
     text-align: center;
     margin-bottom: 10px;
-        color: #ff5100;
+    color: #FF5F1F;
 }
 
 .ranking-box ol {
@@ -87,174 +101,758 @@ letter-spacing: 2px;
     margin: 5px 0;
 }
 
-.ranking-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
 @media (max-width: 900px) {
     .ranking-container {
         grid-template-columns: 1fr;
     }
 }
 
-/* LOGIN BOX */
-
-.arcade-login-wrapper{
-
+/* LOGIN */
+.arcade-login-wrapper {
     width: 100%;
     max-width: 650px;
-
     background: #111114;
-
     padding: 50px;
-
     border-radius: 20px;
-
     border-top: 4px solid #FF5F1F;
     border-bottom: 4px solid #4410C3;
-
-    box-shadow:
-    0 0 25px rgba(0,0,0,0.5);
-
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
     margin: 60px auto;
 }
 
-.arcade-login-title{
-
+.arcade-login-title {
     color: white;
-
     text-align: center;
-
     font-size: 42px;
-
     margin-bottom: 10px;
 }
 
-.arcade-login-subtitle{
-
+.arcade-login-subtitle {
     text-align: center;
-
     color: #bdbdbd;
+    margin-bottom: 40px;
+}
 
+.arcade-input-group {
+    margin-bottom: 25px;
+}
+
+.arcade-input-group label {
+    display: block;
+    color: #d4d4d4;
+    margin-bottom: 8px;
+}
+
+.arcade-input-group input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background: #1f1f25;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.arcade-input-group input:focus {
+    border-color: #4410C3;
+    box-shadow: 0 0 12px rgba(68, 16, 195, 0.5);
+}
+
+.arcade-login-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.arcade-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.arcade-btn-login {
+    background: linear-gradient(90deg, #FF5F1F, #ff8c00);
+    color: white;
+}
+
+.arcade-btn-register {
+    background: linear-gradient(90deg, #4410C3, #7a3cff);
+    color: white;
+}
+
+.arcade-btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+/* REGISTRO */
+.arcade-register-wrapper {
+    width: 100%;
+    max-width: 650px;
+    background: #111114;
+    padding: 50px;
+    border-radius: 20px;
+    border-top: 4px solid #4410C3;
+    border-bottom: 4px solid #FF5F1F;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    margin: 60px auto;
+}
+
+.arcade-register-title {
+    color: white;
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.arcade-register-subtitle {
+    text-align: center;
+    color: #bdbdbd;
     margin-bottom: 40px;
 }
 
 
-.arcade-input-group{
-    margin-bottom: 25px;
-}
-
-.arcade-input-group label{
-
-    display: block;
-
-    color: #d4d4d4;
-
-    margin-bottom: 8px;
-}
-
-.arcade-input-group input{
-
-    width: 100%;
-
-    padding: 16px;
-
-    border-radius: 10px;
-
-    border: 2px solid #333;
-
-    background: #1f1f25;
-
-    color: white;
-
-    font-size: 16px;
-
-    outline: none;
-
-    transition: 0.3s;
-}
-
-.arcade-input-group input:focus{
-
-    border-color: #4410C3;
-
-    box-shadow:
-    0 0 12px rgba(68,16,195,0.5);
-}
-
-
-.arcade-login-buttons{
-
-    display: flex;
-
-    gap: 15px;
-
-    margin-top: 10px;
-}
-
-.arcade-btn{
-
-    flex: 1;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.arcade-btn-login{
-
-    background: linear-gradient(
-    90deg,
-    #FF5F1F,
-    #ff8c00
-    );
-
-    color: white;
-}
-
-.arcade-btn-register{
-
-    background: linear-gradient(
-    90deg,
-    #4410C3,
-    #7a3cff
-    );
-
-    color: white;
-}
-
-.arcade-btn:hover{
-
-    transform: scale(1.03);
-
-    opacity: 0.9;
-}
-
-@media(max-width: 600px){
-
-    .arcade-login-wrapper{
-        padding: 35px;
+  /* MOBILE GERAL */
+  
+@media (max-width: 600px) {
+    .arcade-login-wrapper,
+    .arcade-register-wrapper {
+        padding: 35px 20px;
+        margin: 30px 15px;
     }
 
-    .arcade-login-buttons{
+    .arcade-login-buttons {
         flex-direction: column;
     }
 
-    .arcade-login-title{
+    .arcade-login-title,
+    .arcade-register-title {
         font-size: 34px;
     }
 
+    .frase {
+        font-size: 22px;
+    }
+}
+
+/* DESAFIO */
+.desafio-wrapper {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.desafio-title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.desafio-subtitle {
+  text-align: center;
+  color: #bdbdbd;
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+
+.modos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.modo-card {
+  background: #111114;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  display: block;
+}
+
+.modo-card:hover {
+  transform: translateY(-6px);
+}
+
+.modo-card.card-1v1 {
+  border-top: 4px solid #FF5F1F;
+  border-bottom: 4px solid #FF5F1F;
+  box-shadow: 0 0 25px rgba(255, 95, 31, 0.2);
+}
+
+.modo-card.card-1v1:hover {
+  box-shadow: 0 0 40px rgba(255, 95, 31, 0.45);
+}
+
+.modo-card.card-cestas {
+  border-top: 4px solid #4410C3;
+  border-bottom: 4px solid #4410C3;
+  box-shadow: 0 0 25px rgba(68, 16, 195, 0.2);
+}
+
+.modo-card.card-cestas:hover {
+  box-shadow: 0 0 40px rgba(68, 16, 195, 0.45);
+}
+
+.modo-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.modo-nome {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.modo-card.card-1v1 .modo-nome {
+  color: #FF5F1F;
+}
+
+.modo-card.card-cestas .modo-nome {
+  color: #7a3cff;
+}
+
+.modo-desc {
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.modo-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Audiowide', cursive;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+  color: white;
+  text-decoration: none;
+}
+
+.modo-card.card-1v1 .modo-btn {
+  background: linear-gradient(90deg, #FF5F1F, #ff8c00);
+}
+
+.modo-card.card-cestas .modo-btn {
+  background: linear-gradient(90deg, #4410C3, #7a3cff);
+}
+
+.modo-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+.modo-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.modo-card.card-1v1 .modo-badge {
+  background: rgba(255, 95, 31, 0.15);
+  color: #FF5F1F;
+  border: 1px solid #FF5F1F;
+}
+
+.modo-card.card-cestas .modo-badge {
+  background: rgba(68, 16, 195, 0.15);
+  color: #7a3cff;
+  border: 1px solid #7a3cff;
+}
+
+.modo-regras {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  font-size: 13px;
+  color: #999;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.modo-regras span {
+  display: block;
+}
+
+.modo-regras span::before {
+  content: "▸ ";
+}
+
+@media (max-width: 650px) {
+  .modos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .desafio-title {
+    font-size: 28px;
+  }
+}
+
+/* CONTATO */
+.contato-wrapper {
+  width: 100%;
+  max-width: 650px;
+  background: #111114;
+  padding: 50px;
+  border-radius: 20px;
+  border-top: 4px solid #FF5F1F;
+  border-bottom: 4px solid #4410C3;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  margin: 60px auto;
+}
+
+.contato-title {
+  color: white;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.contato-subtitle {
+  text-align: center;
+  color: #bdbdbd;
+  margin-bottom: 40px;
+}
+
+.arcade-input-group textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background: #1f1f25;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.arcade-input-group textarea:focus {
+  border-color: #4410C3;
+  box-shadow: 0 0 12px rgba(68, 16, 195, 0.5);
+}
+
+@media (max-width: 600px) {
+  .contato-wrapper {
+    padding: 35px 20px;
+    margin: 30px 15px;
+  }
+
+  .contato-title {
+    font-size: 28px;
+  }
+}
+
+/* RANK */
+.rank-wrapper {
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.rank-title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.rank-subtitle {
+  text-align: center;
+  color: #bdbdbd;
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+.rank-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.rank-tab {
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background: #111114;
+  color: #bdbdbd;
+  font-size: 15px;
+  font-family: 'Audiowide', cursive;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rank-tab:hover {
+  border-color: #FF5F1F;
+  color: #FF5F1F;
+}
+
+.rank-tab.active {
+  background: linear-gradient(90deg, #FF5F1F, #ff8c00);
+  border-color: transparent;
+  color: white;
+}
+
+.rank-tabela {
+  display: none;
+}
+
+.rank-tabela.active {
+  display: block;
+}
+
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111114;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.rank-table thead {
+  background: #0D0D0D;
+  border-bottom: 3px solid #FF5F1F;
+}
+
+.rank-table th {
+  padding: 15px 20px;
+  text-align: left;
+  color: #FF5F1F;
+  font-family: 'Audiowide', cursive;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.rank-table td {
+  padding: 14px 20px;
+  color: #d4d4d4;
+  border-bottom: 1px solid #1f1f25;
+  font-size: 15px;
+}
+
+.rank-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rank-table tbody tr:hover {
+  background: rgba(255, 95, 31, 0.07);
+}
+
+.rank-pos {
+  font-size: 18px;
+  width: 40px;
+}
+
+.rank-nome {
+  font-weight: bold;
+  color: white;
+}
+
+.rank-valor {
+  color: #FF5F1F;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.rank-gold td {
+  background: rgba(255, 200, 0, 0.07);
+}
+
+.rank-silver td {
+  background: rgba(180, 180, 180, 0.07);
+}
+
+.rank-bronze td {
+  background: rgba(180, 100, 30, 0.07);
+}
+
+@media (max-width: 600px) {
+  .rank-title {
+    font-size: 26px;
+  }
+
+  .rank-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rank-table th,
+  .rank-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* =====================
+   TABELA RANKING INDEX
+   ===================== */
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.ranking-table th {
+    color: #FF5F1F;
+    padding: 8px;
+    border-bottom: 2px solid #FF5F1F;
+    font-family: 'Audiowide', cursive;
+    font-size: 13px;
+    text-align: center;
+}
+
+.ranking-table td {
+    padding: 8px;
+    color: #d4d4d4;
+    border-bottom: 1px solid #1f1f25;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ranking-table tbody tr:hover {
+    background: rgba(255, 95, 31, 0.07);
+}
+
+/* BOTÃO LOGIN INDEX */
+.index-login-btn {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto 60px;
+}
+
+.index-login-btn .arcade-btn {
+    flex: none;
+    padding: 16px 50px;
+    font-size: 17px;
+    font-family: 'Audiowide', cursive;
+    text-decoration: none;
+}
+
+/* FUNDOS POR PÁGINA */
+
+/* INDEX - fundo com brilho laranja sutil */
+body.page-index {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 95, 31, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(68, 16, 195, 0.07) 0%, transparent 60%),
+        #1F1F1F;
+}
+
+/* LOGIN - brilho centralizado roxo/laranja */
+body.page-entrar {
+    background:
+        radial-gradient(ellipse at 50% 40%, rgba(68, 16, 195, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 95, 31, 0.07) 0%, transparent 50%),
+        #1F1F1F;
+}
+
+/* REGISTRO - espelho do login com cores invertidas */
+body.page-registro {
+    background:
+        radial-gradient(ellipse at 50% 40%, rgba(255, 95, 31, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(68, 16, 195, 0.07) 0%, transparent 50%),
+        #1F1F1F;
+}
+
+/* DESAFIO - dois brilhos nos cards */
+body.page-desafio {
+    background:
+        radial-gradient(ellipse at 25% 60%, rgba(255, 95, 31, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 60%, rgba(68, 16, 195, 0.08) 0%, transparent 50%),
+        #1F1F1F;
+}
+
+/* CONTATO - brilho suave central */
+body.page-contato {
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(68, 16, 195, 0.09) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 10%, rgba(255, 95, 31, 0.06) 0%, transparent 40%),
+        #1F1F1F;
+}
+
+/* RANK - brilho topo centralizado */
+body.page-rank {
+    background:
+        radial-gradient(ellipse at 50% 10%, rgba(255, 95, 31, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 80%, rgba(68, 16, 195, 0.07) 0%, transparent 50%),
+        #1F1F1F;
+}
+
+/* INDEX HERO */
+.index-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 40px;
+    text-align: center;
+    animation: fadeInDown 0.8s ease;
+}
+
+.index-hero-icon {
+    font-size: 72px;
+    animation: bounce 2s infinite;
+    display: block;
+    margin-bottom: 15px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.index-hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(255, 95, 31, 0.4);
+}
+
+.index-hero-sub {
+    font-family: 'Audiowide', cursive;
+    color: #b8b8b8;
+    font-size: 16px;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+
+.index-hero-btn {
+    flex: none;
+    padding: 16px 50px;
+    font-size: 18px;
+    font-family: 'Audiowide', cursive;
+    text-decoration: none;
+    letter-spacing: 1px;
+    box-shadow: 0 0 25px rgba(255, 95, 31, 0.35);
+}
+
+/* INDEX SECTION TITLE */
+.index-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 40px 5px;
+}
+
+.index-section-title h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+.index-section-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF5F1F, transparent);
+}
+
+/* TABELA RANKING INDEX (ATUALIZADA) */
+.ranking-table th {
+    color: #FF5F1F;
+    padding: 10px 8px;
+    border-bottom: 2px solid #FF5F1F;
+    font-family: 'Audiowide', cursive;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ranking-table td {
+    padding: 10px 8px;
+    color: #d4d4d4;
+    border-bottom: 1px solid #1f1f25;
+    font-size: 15px;
+    text-align: center;
+}
+
+.rank-idx {
+    font-size: 18px;
+    width: 35px;
+}
+
+.rank-player {
+    font-weight: bold;
+    color: white;
+    font-size: 15px;
+}
+
+.rank-win {
+    color: #4dff91;
+    font-weight: bold;
+}
+
+.rank-pts {
+    color: #FF5F1F;
+    font-weight: bold;
+}
+
+.row-gold td {
+    background: rgba(255, 200, 0, 0.08);
+}
+
+.row-silver td {
+    background: rgba(180, 180, 180, 0.06);
+}
+
+.row-bronze td {
+    background: rgba(180, 100, 30, 0.06);
+}
+
+.ranking-table tbody tr:hover {
+    background: rgba(255, 95, 31, 0.1);
+    transition: background 0.2s;
+}
+
+@media (max-width: 600px) {
+    .index-hero-title {
+        font-size: 32px;
+    }
+
+    .index-hero-icon {
+        font-size: 52px;
+    }
+
+    .index-section-title h2 {
+        font-size: 17px;
+    }
 }

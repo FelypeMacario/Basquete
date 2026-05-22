@@ -1,14 +1,70 @@
 <!DOCTYPE html>
-<html lang="Pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basquete Game</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
 </head>
-    
+<body class="page-desafio">
+
+  <nav class="navbar">
+    <h1>Ranking Arcade</h1>
+    <ul>
+      <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+      <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      <li><a href="{{ url_for('rank') }}">Rank</a></li>
+      <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
+    </ul>
+  </nav>
+
+  <div class="desafio-wrapper">
+
+    <h1 class="desafio-title">Modos de Desafio</h1>
+    <p class="desafio-subtitle">Escolha seu modo e entre na disputa</p>
+
+    <div class="modos-grid">
+
+      <!-- CARD 1v1 -->
+      <div class="modo-card card-1v1">
+        <span class="modo-icon">⚔️</span>
+        <span class="modo-badge">DUELO</span>
+        <div class="modo-nome">1 vs 1</div>
+        <p class="modo-desc">
+          Enfrente outro jogador diretamente. Vence quem marcar mais pontos ao final do tempo.
+        </p>
+        <div class="modo-regras">
+          <span>2 jogadores por partida</span>
+          <span>Tempo limitado</span>
+          <span>Vitória conta no ranking</span>
+        </div>
+        <br>
+        <a href="#" class="modo-btn">Iniciar Duelo</a>
+      </div>
+
+      <!-- CARD CESTAS -->
+      <div class="modo-card card-cestas">
+        <span class="modo-icon">🏀</span>
+        <span class="modo-badge">PRECISÃO</span>
+        <div class="modo-nome">Quantidade de Cestas</div>
+        <p class="modo-desc">
+          Tente bater seu recorde de cestas consecutivas. Quanto mais acertar, mais pontos você acumula.
+        </p>
+        <div class="modo-regras">
+          <span>Modo solo</span>
+          <span>Sem limite de tempo</span>
+          <span>Pontos por cesta acertada</span>
+        </div>
+        <br>
+        <a href="#" class="modo-btn">Iniciar Desafio</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
