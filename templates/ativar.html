@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ativar Partida</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}">
+</head>
+<body class="page-ativar">
+
+  <nav class="navbar">
+    <h1>Ranking Arcade</h1>
+    <ul>
+      <li><a href="{{ url_for('desafio') }}">Desafio</a></li>
+      <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      <li><a href="{{ url_for('rank') }}">Rank</a></li>
+      <li><a href="{{ url_for('entrar') }}">Entrar</a></li>
+    </ul>
+  </nav>
+
+  <div class="arcade-login-wrapper">
+
+    <h1 class="arcade-login-title">🏀 Ativar Partida</h1>
+    <p class="arcade-login-subtitle">Digite o PIN exibido no placar para registrar seu resultado</p>
+
+    {% if erro %}
+      <p class="ativar-erro">⚠️ {{ erro }}</p>
+    {% endif %}
+
+    {# ── PASSO 1: buscar pelo PIN ── #}
+    {% if not partida %}
+
+    <form method="POST" action="{{ url_for('ativar') }}">
+  <input type="hidden" name="acao" value="buscar">
+
+  <div class="arcade-input-group">
+    <label>PIN da Partida</label>
+    <input type="text" name="pin" maxlength="4" inputmode="numeric"
+           placeholder="0000" required autofocus>
+  </div>
+
+  <div class="arcade-login-buttons">
+    <button type="submit" class="arcade-btn arcade-btn-login">
+      Buscar Partida
+    </button>
+  </div>
+</form>
+
+    {# ── PASSO 2: exibe placar + campo de nickname ── #}
+    {% else %}
+
+    <div class="ativar-resultado">
+      <p class="ativar-pin-label">PIN: <strong>{{ partida.pin }}</strong></p>
+      <div class="ativar-placar">
+        <div class="ativar-time">
+          <span class="ativar-time-label">Pontos</span>
+          <span class="ativar-pts">{{ partida.pontos }}</span>
+        </div>
+      </div>
+      <p class="ativar-tempo">⏱ {{ partida.tempo }}</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('ativar') }}">
+      <input type="hidden" name="acao" value="salvar">
+      <input type="hidden" name="pin"  value="{{ partida.pin }}">
+
+      <div class="arcade-input-group">
+        <label>Seu Nickname</label>
+        <input type="text" name="nickname" placeholder="Ex: AirBR23" maxlength="20" required autofocus>
+      </div>
+
+      <div class="arcade-login-buttons">
+        <button type="submit" class="arcade-btn arcade-btn-login">
+          Confirmar e Entrar no Ranking
+        </button>
+      </div>
+    </form>
+
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="ativar-back">← Voltar ao início</a>
+
+  </div>
+</body>
+</html>

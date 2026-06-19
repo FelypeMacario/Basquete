@@ -1,9 +1,10 @@
-CREATE TABLE IF NOT EXISTS jogadores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL UNIQUE,
-    vitorias INTEGER DEFAULT 0,
-    derrotas INTEGER DEFAULT 0,
-    pontos INTEGER DEFAULT 0
+CREATE TABLE IF NOT EXISTS partidas (
+    id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    pin       TEXT NOT NULL UNIQUE,
+    pontos    INTEGER DEFAULT 0,
+    tempo     TEXT DEFAULT '00:00',
+    nickname  TEXT,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO jogadores (nome, vitorias, derrotas, pontos) VALUES
